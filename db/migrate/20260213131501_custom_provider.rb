@@ -18,7 +18,7 @@
 # <https://www.gnu.org/licenses/>.
 
 # OauthProviders DB migration
-class CustomProvider < ActiveRecord::Migration[7.2]
+class CustomProvider < ActiveRecord::Migration[5.2]
   def up
     change_column :oauth_providers, :site, :string, null: true, limit: 40
   end

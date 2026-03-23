@@ -18,7 +18,7 @@
 # <https://www.gnu.org/licenses/>.
 
 # OauthProviders DB migration
-class CreateOauthProviders < ActiveRecord::Migration[7.2]
+class CreateOauthProviders < ActiveRecord::Migration[5.2]
   def up
     create_table :oauth_providers do |t|
       t.string :oauth_name, null: false, default: 'none', limit: 30

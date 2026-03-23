@@ -28,7 +28,7 @@ Redmine::Plugin.register :redmine_oauth do
   url 'https://github.com/kontron/redmine_oauth'
   author_url 'https://github.com/kontron/redmine_oauth/graphs/contributors'
 
-  requires_redmine version_or_higher: '6.0.0'
+  requires_redmine version_or_higher: '5.1.0'
 
   settings default: {
     hide_login_form: '0',
@@ -42,8 +42,10 @@ end
 
 # Administration menu extension
 Redmine::MenuManager.map :admin_menu do |menu|
-  menu.push :oauth_providers, { controller: 'oauth_providers', action: 'index' },
-            icon: 'apps',
-            caption: :label_oauth_providers,
-            html: { class: 'icon icon-applications' }
+  menu_options = {
+    caption: :label_oauth_providers,
+    html: { class: 'icon icon-applications' }
+  }
+  menu_options[:icon] = 'apps' if Redmine::VERSION::MAJOR >= 6
+  menu.push :oauth_providers, { controller: 'oauth_providers', action: 'index' }, menu_options
 end

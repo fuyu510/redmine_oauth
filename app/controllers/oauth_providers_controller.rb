@@ -23,7 +23,7 @@ class OauthProvidersController < ApplicationController
 
   model_object OauthProvider
   menu_item :oauth_provides
-  self.main_menu = false
+  self.main_menu = false if respond_to?(:main_menu=)
 
   helper :sort
   include SortHelper

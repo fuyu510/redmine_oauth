@@ -18,7 +18,7 @@
 # <https://www.gnu.org/licenses/>.
 
 # OauthProviders DB migration
-class GoogleExtension < ActiveRecord::Migration[7.2]
+class GoogleExtension < ActiveRecord::Migration[5.2]
   def up
     change_column :oauth_providers, :client_id, :string, null: false, limit: 80
     add_column :oauth_providers, :hd, :string, null: true, limit: 40

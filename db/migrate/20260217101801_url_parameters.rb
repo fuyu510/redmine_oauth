@@ -18,7 +18,7 @@
 # <https://www.gnu.org/licenses/>.
 
 # OauthProviders DB migration
-class UrlParameters < ActiveRecord::Migration[7.2]
+class UrlParameters < ActiveRecord::Migration[5.2]
   def up
     remove_column :oauth_providers, :hd
     remove_column :oauth_providers, :access_type

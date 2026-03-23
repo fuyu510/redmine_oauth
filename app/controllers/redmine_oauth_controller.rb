@@ -297,7 +297,11 @@ class RedmineOauthController < AccountController
       if user.registered? # Registered
         account_pending user
       elsif user.active? # Active
-        handle_active_user user
+        if respond_to?(:handle_active_user, true)
+          handle_active_user user
+        else
+          successful_authentication user
+        end
         user.update_last_login_on!
         if RedmineOauth.update_login?
           user.login = login
@@ -308,7 +312,11 @@ class RedmineOauthController < AccountController
         # Disable password change request
         session.delete(:pwd)
       else # Locked
-        handle_inactive_user user
+        if respond_to?(:handle_inactive_user, true)
+          handle_inactive_user user
+        else
+          account_locked user
+        end
       end
     elsif RedmineOauth.self_registration.positive?
       # Create on the fly

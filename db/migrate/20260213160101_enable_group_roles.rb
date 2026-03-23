@@ -18,7 +18,7 @@
 # <https://www.gnu.org/licenses/>.
 
 # OauthProviders DB migration
-class EnableGroupRoles < ActiveRecord::Migration[7.2]
+class EnableGroupRoles < ActiveRecord::Migration[5.2]
   def up
     add_column :oauth_providers, :enable_group_roles, :boolean, null: false, default: false
   end

@@ -18,7 +18,7 @@
 # <https://www.gnu.org/licenses/>.
 
 # OauthProviders DB migration
-class ButtonText < ActiveRecord::Migration[7.2]
+class ButtonText < ActiveRecord::Migration[5.2]
   def change
     add_column :oauth_providers, :button_text, :string, null: true, limit: 40
   end
